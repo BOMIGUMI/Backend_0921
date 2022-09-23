@@ -65,6 +65,16 @@ SELECT * FROM tigers;
 CREATE TABLE tigers if NOT EXISTS tigers(
 ); # => tigers 테이블이 없으면 생성해줘라
 
+# 뷰 생성
+CREATE VIEW largecity
+	AS SELECT * FROM city
+		WHERE population>=7000 WITH CHECK OPTION;
+SHOW TABLES;                                            # => largecity라는것이 생성됨
+UPDATE largecity SET countrycode='GBR' WHERE id=206;
+SELECT * FROM largecity;                                 # => 값을 바꿀수 도 있음
+
+
+
 # 데이터 테이블 만들기 (기아타이거즈 => id, 선수명, 백넘버, 포지션)
 CREATE TABLE tigers (
 	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -80,5 +90,5 @@ INSERT INTO tigers (player, backno, POSITION)
 	VALUES ('이의리', '48', '투수');
 INSERT INTO tigers (player, backno, POSITION)
 	VALUES ('박동원', '10', '포수'),('김선빈', '3', '내야수'),
-		('박찬호', '1', '내야수'),('나성범', 47', '외야수'),
-		('소크라테스', '30', '외야수');
+		    ('박찬호', '1', '내야수'),('나성범', 47', '외야수'),
+		    ('소크라테스', '30', '외야수');

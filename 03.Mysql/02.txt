@@ -1,0 +1,22 @@
+
+<테이블 생성>
+
+Create table 테이블명 (
+   필드명 데이터타입 [NOT NULL] [KEY] [DEFAILT 값] [EXTRA],
+   필드명 데이터타입 [NOT NULL] [KEY] [DEFAILT 값] [EXTRA],
+   필드명 데이터타입 [NOT NULL] [KEY] [DEFAILT 값] [EXTRA],
+   ...
+) [Extra];
+
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+
+<테이블 제거>
+
+drop table [테이블 명]
+
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+
+테이블 A                      테이블 B
+COMMON  aDATA			COMMON  bDATA
+100     aa				100     bb
+101     cc				100     dd
