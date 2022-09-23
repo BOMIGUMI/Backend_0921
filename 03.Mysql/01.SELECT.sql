@@ -164,3 +164,17 @@ SELECT c.name, c.Population, l.`Language` FROM city AS c
 # 국가별로 gnp가 가장 높은 top10만 뽑기
 SELECT continent, gnp FROM country
 	ORDER by gnp desc LIMIT 10;
+
+
+UPDATE city
+	SET NAME='Gwangju', district='Gwangju'
+	WHERE id=2336;
+	
+SELECT * FROM city WHERE NAME='Gwangju';
+
+# 전라남도 도시의 인구를 20만으로 변경
+UPDATE city 
+	SET population=200000 where district='chollanam';
+
+# 전라- 로시작하는 지역의 도시
+SELECT * FROM city WHERE district LIKE 'cholla%';

@@ -1,0 +1,38 @@
+/* upcate 테이블명
+	set 필드명=값, 필드명
+	set 필드명=값[, 필드명=값, 필드명=값, 필드명=값 …..]
+	where 조건; */
+
+
+<수정>
+
+updatd 테이블명
+   set 필드명=값[, 필드명=값, 필드명=값, ...] => 하나만 올 수 있고, 여러개도 올 수 있음
+   where 조건;
+
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+<꼭 외워야할것 >
+
+select 필드명 from 테이블명
+
+join 테이블명
+
+on 조인 조건
+
+where 조건
+
+order by 필드명 순서
+
+group by 필드명
+
+having 그룹조건
+
+limit 숫자 offset 숫자;
+
+select * from city where countrycode='kor'
+
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+
+key
+
+primary key (기본키)
