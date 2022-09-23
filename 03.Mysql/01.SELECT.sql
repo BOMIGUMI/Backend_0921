@@ -4,16 +4,25 @@ use world;
 show tables;
 DESC city;  #주석 => city가 어떤 구조로 만들어 졌는지 확인
 
-/* 
-SELCET 필드명 FROM 테이블명
-    WHERE 조건
-    GROUP BY 필드명 순서
-    LIMIT 가지고 오는 갯수(숫자) OFFSET 숫자
-    HAVING 그룹 조건
-    ORDER BY 필드명 순서
-    JOIN 테이블명
-    ON 조인 조건;
+/*  <기억해야함 !!!>
+select 필드명 from 테이블명
 
+join 테이블명
+
+on 조인 조건
+
+where 조건
+
+order by 필드명 순서
+
+group by 필드명
+
+having 그룹조건
+
+limit 숫자 offset 숫자;
+
+select * from city where countrycode='kor'
+	
  */
 
  SELCET * FROM city;
@@ -132,6 +141,26 @@ SELECT country.NAME, city.Population FROM city
 	JOIN country ON city.CountryCode=country.Code
 	ORDER BY city.Population DESC LIMIT 10;
 
-# 대륙별로
+# 대륙별로 국가숫자, GNP합, 평균 국가별 GNP 구하기
 SELECT continent, round(SUM(gnp),-3), round(AVG(gnp),-3) FROM country
 	GROUP BY continent;
+
+SELECT continent, round(SUM(gnp),-3) AS GNP_SUM, round(AVG(gnp),-3) AS GNP_AVG FROM country
+	GROUP BY continent;
+
+#아시아 대륙에서 인구가 가장 많은 도시 10갸를 내림차순으로 (대륙, 국가명, 인구수,  도시명)
+SELECT country.Continent, country.Name, city.Name, city.Population FROM city
+	JOIN country ON city.CountryCode=country.Code
+	WHERE country.Continent='Asia'
+	ORDER by city.Population desc
+	LIMIT 10;
+
+# 전 세계에서 인구가 가장 많은 도시에서 사용하는 공식 언어 (국가명, 인구수, 언어)
+SELECT c.name, c.Population, l.`Language` FROM city AS c
+	JOIN countrylanguage AS l ON c.CountryCode=l.CountryCode
+	WHERE l.IsOfficial='T'
+	ORDER BY c.Population DESC 
+
+# 국가별로 gnp가 가장 높은 top10만 뽑기
+SELECT continent, gnp FROM country
+	ORDER by gnp desc LIMIT 10;
