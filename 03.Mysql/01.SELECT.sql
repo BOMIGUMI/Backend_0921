@@ -178,3 +178,22 @@ UPDATE city
 
 # 전라- 로시작하는 지역의 도시
 SELECT * FROM city WHERE district LIKE 'cholla%';
+
+#해남이 전라-로 시작하는 지역의 도시에 추가
+INSERT INTO city
+	(NAME, countrycode, district, population)
+	VALUES ('Haenam', 'KOR', 'Chollanam', 100000);
+SELECT * FROM city WHERE district LIKE 'cholla%';
+
+# 장성이 전라남도의 도시에 추가
+INSERT INTO city
+	VALUES (DEFAULT, 'Jangsung', 'KOR', 'Chollanam', 100000);
+SELECT * FROM city WHERE district LIKE 'chollanam';
+
+SELECT * FROM city ORDER BY id DESC LIMIT 5;
+
+#() => 가상의 테이블
+UPDATE city, (SELECT * FROM city WHERE district='Chollanam') b
+	SET city.Population=b.Population+50000
+	WHERE city.id=b.id;
+SELECT * FROM city WHERE district LIKE 'chollanam' # => 50000이 추가됨
