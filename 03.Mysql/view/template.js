@@ -33,7 +33,7 @@ module.exports = {
         let trs = '';
         for (let row of rows) {
             trs += '<tr>';
-            trs += `<td>${row.id}</td><td>${row.player}</td>`;
+            trs += `<td>${row.id}</td><td>${row.palyer}</td>`;
             trs += `<td>${row.backNo}</td><td>${row.position}</td>`;
             trs += '</tr>';
         }
