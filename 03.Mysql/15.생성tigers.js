@@ -5,9 +5,8 @@ const conn = mysql.createConnection(config);
 conn.connect();
 let sql = `
     INSERT INTO tigers (player, backNo, POSITION)
-    VALUES (?, ?, ?);`;
-const params = ['박준표', 31, '투수'];
-conn.query(sql, params, (err, fields) => {
+    VALUES ('한승택', 4, '포수');`;
+conn.query(sql, (err, fields) => {
     if (err)
         throw err;
     

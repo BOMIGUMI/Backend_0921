@@ -1,7 +1,6 @@
 const fs = require('fs');
 const mysql = require('mysql');
 const config = require('./mysql.json');
-console.log(config)
 let html = `
 <!DOCTYPE html>
 <html lang="en">
@@ -23,26 +22,25 @@ let html = `
 `;
 
 const connection = mysql.createConnection(config);
-connection.connect();                                       // MySQL DB에 접속 
-const sql = `SELECT * FROM city WHERE POPULATION > 9000000;`;
+
+connection.connect();           // MySQL DB에 접속
+const sql = `SELECT * FROM city WHERE population > 9000000;`;
 connection.query(sql, (err, rows, fields) => {
     if (err)
         throw err;
-    //console.log(rows);                                      // rows : 배열 타입
     for (let row of rows) {
         let line = '<tr>';
-        line += `<td>${row.ID}</td><td>${row.Name}</td><td>${row.CountruCode}</td><td>${row.District}</td><td>${row.Population}</td>`;
-        line +=`</tr>`
-        html += line;        
+        line += `<td>${row.ID}</td><td>${row.Name}</td><td>${row.CountryCode}</td><td>${row.District}</td><td>${row.Population}</td>`;
+        line += '</tr>\n';
+        html += line;
     }
-    //console.log(fields);
     html += `
     </table>
 </body>
 </html>
     `;
     fs.writeFile('12.table.html', html, err => {
-        
+
     });
 });
-connection.end();                                           // MySQL DB에 접속 해제 
+connection.end();               // MySQL DB 접속 해제
