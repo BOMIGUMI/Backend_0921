@@ -37,8 +37,8 @@ module.exports = {
             trs += '<tr>';
             trs += `<td>${row.id}</td><td>${row.player}</td>`;
             trs += `<td>${row.backNo}</td><td>${row.position}</td>`;
-            trs += `<td><a href="/update?id="${row.id}">수정</a>, 
-                        <a href="/delete?id="${row.id}">삭제</a></td>`;
+            trs += `<td><a href="/update?id=${row.id}">수정</a>, 
+                        <a href="/delete?id=${row.id}">삭제</a></td>`;
             trs += '</tr>';
         }
         return trs;
@@ -80,10 +80,9 @@ module.exports = {
         </body>
         </html>
         `;
-    }
-},
+    },
 
-    updateForm : function(id, palyer, backNo, position) {
+    updateForm: function(id, player, backNo, position) {
         return `
         <!DOCTYPE html>
         <html lang="en">
@@ -100,24 +99,25 @@ module.exports = {
             <h1>기아 타이거즈 선수단</h1>
             <button onclick="location.href='/'">홈으로</button>
             <hr>
-            <form action="/create" method="post">
-            <input type="hidden" name="id" value="${id}"
+            <form action="/update" method="post">
+                <input type="hidden" name="id" value="${id}">
                 <table>
                     <tr>
-                        <td>선수명</td><td><input type="text" name="player" vlaue="${palyer}"></td>
+                        <td>선수명</td><td><input type="text" name="player" value="${player}"></td>
                     </tr>
                     <tr>
-                        <td>백넘버</td><td><input type="text" name="backNo" vlaue="${backNo}"></td>
+                        <td>백넘버</td><td><input type="text" name="backNo" value="${backNo}"></td>
                     </tr>
                     <tr>
-                        <td>포지션</td><td><input type="text" name="position" vlaue="${position}"></td>
+                        <td>포지션</td><td><input type="text" name="position" value="${position}"></td>
                     </tr>
                     <tr>
-                        <td colspan="2"><input type="submit" value="추가"></td>
+                        <td colspan="2"><input type="submit" value="수정"></td>
                     </tr>
                 </table>
             </form>
         </body>
         </html>
         `;
+    }
 }
