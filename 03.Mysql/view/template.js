@@ -35,7 +35,7 @@ module.exports = {
         let trs = '';
         for (let row of rows) {
             trs += '<tr>';
-            trs += `<td>${row.id}</td><td>${row.player}</td>`;
+            trs += `<td>${row.id}</td><td>${row.palyer}</td>`;
             trs += `<td>${row.backNo}</td><td>${row.position}</td>`;
             trs += `<td><a href="/update?id=${row.id}">수정</a>, 
                         <a href="/delete?id=${row.id}">삭제</a></td>`;
@@ -64,7 +64,7 @@ module.exports = {
             <form action="/create" method="post">
                 <table>
                     <tr>
-                        <td>선수명</td><td><input type="text" name="player"></td>
+                        <td>선수명</td><td><input type="text" name="palyer"></td>
                     </tr>
                     <tr>
                         <td>백넘버</td><td><input type="text" name="backNo"></td>
@@ -79,10 +79,10 @@ module.exports = {
             </form>
         </body>
         </html>
-        `;
+        `;palyer
     },
 
-    updateForm: function(id, player, backNo, position) {
+    updateForm: function(id, palyer, backNo, position) {
         return `
         <!DOCTYPE html>
         <html lang="en">
@@ -103,7 +103,7 @@ module.exports = {
                 <input type="hidden" name="id" value="${id}">
                 <table>
                     <tr>
-                        <td>선수명</td><td><input type="text" name="player" value="${player}"></td>
+                        <td>선수명</td><td><input type="text" name="palyer" value="${palyer}"></td>
                     </tr>
                     <tr>
                         <td>백넘버</td><td><input type="text" name="backNo" value="${backNo}"></td>
@@ -116,6 +116,28 @@ module.exports = {
                     </tr>
                 </table>
             </form>
+        </body>
+        </html>
+        `;
+    },
+    deleteForm: function(id) {
+        return `
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Document</title>
+        </head>
+        <body>
+            <script>
+                let answer = confirm('정말로 삭제하겠습니까?');
+                if (answer)
+                    location.href = '/deleteConfirm?id=${id}';
+                else
+                    location.href = '/';
+            </script>
         </body>
         </html>
         `;
