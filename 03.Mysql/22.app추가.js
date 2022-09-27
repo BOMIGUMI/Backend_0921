@@ -7,7 +7,6 @@ const template = require('./view/template');
 
 http.createServer((req, res) => {
     let pathname = url.parse(req.url).pathname;
-    let query = url.parse(req.url, true)
     switch(pathname) {
     case '/':                   // 초기 홈 화면
         const conn = mysql.createConnection(config);
@@ -50,14 +49,7 @@ http.createServer((req, res) => {
                 conn.end();
             });
         }
-        break;
-    case '/update':
-        if (req.method == 'GET') {              // 수정 입력할 폼 보여주기
-
-        } else {                                // DB에 수정하기
-
-        }
-        break;
+        break;   
     default:
         res.writeHead(404, {'Content-Type': 'text/html'});
         res.end();        

@@ -45,7 +45,7 @@ module.exports = {
         let trs = '';
         for (let row of rows) {
             trs += '<tr>';
-            trs += `<td>${row.id}</td><td>${row.palyer}</td>`;
+            trs += `<td>${row.id}</td><td>${row.player}</td>`;
             trs += `<td>${row.backNo}</td><td>${row.position}</td>`;
             trs += `<td><a href="/update?id="${row.id}">수정</a>, 
                         <a href="/delete?id="${row.id}">삭제</a></td>`;
