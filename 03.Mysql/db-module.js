@@ -64,17 +64,38 @@ module.exports = {
         });
         conn.end();
     },
-    getPlayersPosition: function(params, callback) {
+    getPlayersByPosition: function(params, callback) {          // 필요한 파라메터
         const conn = this.getConnection();
-        const sql = `SELECT * FROM tigers WHERE id=? and isDeleted=0;`;
+        const sql = `SELECT * FROM tigers WHERE position=?;`;
         conn.query(sql, params, (err, rows, fields) => {
             if (err)
                 throw err;
-            callback(rows);    
+            callback(rows);                                     // 콜백 파라메터
         });
         conn.end();
     },
-    getPlayersOrderByBackNo: function() {
-        
+    getPlayersOrderByBackNo: function(order, callback) {   // ASC-0, DESC-1
+        const conn = this.getConnection();
+        let sql = `SELECT * FROM tigers WHERE isDeleted=0
+                    ORDER BY backNo `;
+        sql += (order == 1) ? 'DESC;' : ';';
+        conn.query(sql, (err, rows, fields) => {
+            if (err)
+                throw err;
+            callback(rows);                                     // 콜백 파라메터
+        });
+        conn.end();
+    },
+    getPlayersByOrder: function(field, order, callback) {
+        const conn = this.getConnection();
+        let sql = `SELECT * FROM tigers WHERE isDeleted=0
+                    ORDER BY ${field} `;
+        sql += (order == 1) ? 'DESC;' : ';';
+        conn.query(sql, (err, rows, fields) => {
+            if (err)
+                throw err;
+            callback(rows);                                     // 콜백 파라메터
+        });
+        conn.end();
     }
 }
